@@ -208,7 +208,7 @@ class PollViewForm extends FormBase implements BaseFormIdInterface {
       $actions['vote']['#weight'] = '0';
 
       // View results before voting.
-      if ($poll->result_vote_allow->value) {
+      if ($poll->result_vote_allow->value || $this->currentUser()->hasPermission('view poll results')) {
         $actions['result']['#type'] = 'submit';
         $actions['result']['#button_type'] = 'primary';
         $actions['result']['#value'] = t('View results');
